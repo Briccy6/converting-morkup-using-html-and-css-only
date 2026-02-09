@@ -4,311 +4,349 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mpuza - Job Portal | Find Your Dream Job</title>
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/sidebar.css">
-    <link rel="stylesheet" href="css/feed.css">
-    <link rel="stylesheet" href="css/job-detail.css">
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#f55145',
+                        secondary: '#0073b1',
+                        accent: '#4fc3f7',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar for job sections */
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 3px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #ccc;
+            border-radius: 3px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #999;
+        }
+    </style>
 </head>
-<body>
+<body class="bg-[#f3f6f9] font-sans text-[#333]">
     <!-- Header -->
-    <header class="header">
-        <div class="header-left">
-            <div class="logo">Mpuza</div>
-            <nav class="nav">
-                <a href="#" class="nav-item active">
-                    <i class="fas fa-user-friends"></i>
-                    <span>My Network</span>
-                    <span class="badge">14</span>
+    <header class="bg-primary text-white px-5 fixed top-0 left-0 right-0 z-[1000] shadow-md flex items-center justify-between h-[60px]">
+        <div class="flex items-center gap-[30px]">
+            <div class="text-2xl font-bold text-white tracking-tight">Mpuza</div>
+            <nav class="flex items-center gap-1.5">
+                <a href="#" class="flex flex-col items-center px-4 py-2 text-white no-underline rounded transition-all hover:bg-white/10 hover:no-underline active bg-white/15 relative">
+                    <i class="fas fa-user-friends text-xl mb-1"></i>
+                    <span class="text-xs">My Network</span>
+                    <span class="absolute top-1.5 right-2 bg-white text-primary px-1.5 py-0.5 rounded-[10px] text-[11px] font-semibold">14</span>
                 </a>
-                <a href="#" class="nav-item">
-                    <i class="fas fa-graduation-cap"></i>
-                    <span>Courses</span>
+                <a href="#" class="flex flex-col items-center px-4 py-2 text-white no-underline rounded transition-all hover:bg-white/10 hover:no-underline">
+                    <i class="fas fa-graduation-cap text-xl mb-1"></i>
+                    <span class="text-xs">Courses</span>
                 </a>
-                <a href="#" class="nav-item">
-                    <i class="fas fa-bell"></i>
-                    <span>Notifications</span>
+                <a href="#" class="flex flex-col items-center px-4 py-2 text-white no-underline rounded transition-all hover:bg-white/10 hover:no-underline">
+                    <i class="fas fa-bell text-xl mb-1"></i>
+                    <span class="text-xs">Notifications</span>
                 </a>
-                <a href="#" class="nav-item">
-                    <i class="fas fa-briefcase"></i>
-                    <span>Job Alerts</span>
+                <a href="#" class="flex flex-col items-center px-4 py-2 text-white no-underline rounded transition-all hover:bg-white/10 hover:no-underline">
+                    <i class="fas fa-briefcase text-xl mb-1"></i>
+                    <span class="text-xs">Job Alerts</span>
                 </a>
             </nav>
         </div>
-        <div class="header-center">
-            <div class="search-bar">
-                <i class="fas fa-search"></i>
-                <input type="text" placeholder="Search...">
+        <div class="flex-1 max-w-[500px] mx-[30px]">
+            <div class="flex items-center bg-white rounded px-3 py-2 gap-2.5">
+                <i class="fas fa-search text-[#666] text-base"></i>
+                <input type="text" placeholder="Search..." class="border-0 outline-0 flex-1 text-sm text-[#333] placeholder:text-[#999]">
             </div>
         </div>
-        <div class="header-right">
-            <div class="profile-menu">
-                <i class="fas fa-bell"></i>
-                <span>Me</span>
+        <div class="flex items-center gap-4">
+            <div class="flex flex-col items-center px-3 py-2 cursor-pointer rounded transition-all hover:bg-white/10">
+                <i class="fas fa-bell text-xl mb-1"></i>
+                <span class="text-xs">Me</span>
             </div>
-            <button class="btn-refresher">Become Refresher</button>
-            <div class="menu-dots">
-                <i class="fas fa-th"></i>
-                <span>More</span>
+            <button class="bg-white text-primary px-4 py-2 rounded-[20px] text-sm font-semibold hover:opacity-90 transition-all border-0 cursor-pointer">Become Refresher</button>
+            <div class="flex flex-col items-center px-3 py-2 cursor-pointer rounded transition-all hover:bg-white/10">
+                <i class="fas fa-th text-xl mb-1"></i>
+                <span class="text-xs">More</span>
             </div>
         </div>
     </header>
 
     <!-- Main Content -->
-    <div class="container">
+    <div class="max-w-[1400px] mx-auto mt-20 px-5 py-5 grid grid-cols-[280px_1fr_360px] gap-5 lg:grid-cols-[250px_1fr_320px] md:grid-cols-1">
         <!-- Left Sidebar -->
-        <aside class="sidebar-left">
+        <aside class="md:hidden">
             <!-- Profile Card -->
-            <div class="card profile-card">
-                <div class="profile-cover">
-                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=100&fit=crop" alt="Cover">
+            <div class="bg-white rounded-lg shadow-sm mb-5 overflow-hidden">
+                <div class="h-[100px] overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=400&h=100&fit=crop" alt="Cover" class="w-full h-full object-cover">
                 </div>
-                <div class="profile-info">
-                    <img src="https://ui-avatars.com/api/?name=Kalisa+Felix&background=4A90E2&color=fff&size=80" alt="Profile" class="profile-pic">
-                    <h3 class="profile-name">kalisa Felix</h3>
-                    <p class="profile-tagline">Software Developer | Tech Enthusiast</p>
-                    <a href="#" class="link">Add Headline</a>
+                <div class="p-5 text-center -mt-10">
+                    <img src="https://ui-avatars.com/api/?name=Kalisa+Felix&background=4A90E2&color=fff&size=80" alt="Profile" class="w-20 h-20 rounded-full border-4 border-white mx-auto mb-2.5">
+                    <h3 class="text-base font-semibold mb-1.5 text-black">kalisa Felix</h3>
+                    <p class="text-xs text-[#666] mb-2.5">Software Developer | Tech Enthusiast</p>
+                    <a href="#" class="text-secondary text-sm no-underline hover:underline">Add Headline</a>
                 </div>
-                <ul class="profile-stats">
-                    <li>
-                        <i class="fas fa-eye"></i>
-                        <span>My profile viewer</span>
-                        <span class="count">68</span>
+                <ul class="list-none p-0 border-t border-[#e0e0e0]">
+                    <li class="flex items-center px-5 py-3 text-sm border-b border-[#e0e0e0] last:border-b-0 hover:bg-[#f8f9fa]">
+                        <i class="fas fa-eye text-[#666] mr-2.5"></i>
+                        <span class="flex-1 text-[#666]">My profile viewer</span>
+                        <span class="font-semibold text-[#666]">68</span>
                     </li>
-                    <li>
-                        <i class="fas fa-file-alt"></i>
-                        <span>Job application</span>
-                        <span class="count">13</span>
+                    <li class="flex items-center px-5 py-3 text-sm border-b border-[#e0e0e0] last:border-b-0 hover:bg-[#f8f9fa]">
+                        <i class="fas fa-file-alt text-[#666] mr-2.5"></i>
+                        <span class="flex-1 text-[#666]">Job application</span>
+                        <span class="font-semibold text-[#666]">13</span>
                     </li>
-                    <li>
-                        <i class="fas fa-handshake"></i>
-                        <span>Recruiter interviewed</span>
-                        <span class="count">10</span>
+                    <li class="flex items-center px-5 py-3 text-sm border-b border-[#e0e0e0] last:border-b-0 hover:bg-[#f8f9fa]">
+                        <i class="fas fa-handshake text-[#666] mr-2.5"></i>
+                        <span class="flex-1 text-[#666]">Recruiter interviewed</span>
+                        <span class="font-semibold text-[#666]">10</span>
                     </li>
-                    <li>
-                        <i class="fas fa-star"></i>
-                        <span>Saved favourite offers</span>
-                        <span class="count">21</span>
+                    <li class="flex items-center px-5 py-3 text-sm border-b border-[#e0e0e0] last:border-b-0 hover:bg-[#f8f9fa]">
+                        <i class="fas fa-star text-[#666] mr-2.5"></i>
+                        <span class="flex-1 text-[#666]">Saved favourite offers</span>
+                        <span class="font-semibold text-[#666]">21</span>
                     </li>
                 </ul>
             </div>
 
             <!-- Company Page Info -->
-            <div class="card company-card">
-                <h4>Company Page Info</h4>
-                <div class="company-create">
-                    <i class="fas fa-building"></i>
-                    <a href="#">Create company page</a>
+            <div class="bg-white rounded-lg shadow-sm mb-5 overflow-hidden p-5">
+                <h4 class="text-base font-semibold mb-4 text-black">Company Page Info</h4>
+                <div class="flex items-center gap-2.5 mb-4 pb-4 border-b border-[#e0e0e0]">
+                    <i class="fas fa-building text-[#666] text-lg"></i>
+                    <a href="#" class="text-secondary text-sm no-underline hover:underline">Create company page</a>
                 </div>
-                <div class="company-item">
-                    <img src="https://ui-avatars.com/api/?name=Airtel&background=E31E24&color=fff&size=60" alt="Airtel" class="company-logo">
-                    <h5>Airtel</h5>
+                <div class="text-center mb-4">
+                    <img src="https://ui-avatars.com/api/?name=Airtel&background=E31E24&color=fff&size=60" alt="Airtel" class="w-[60px] h-[60px] rounded-lg mx-auto mb-2.5">
+                    <h5 class="text-sm font-semibold text-black">Airtel</h5>
                 </div>
-                <ul class="company-stats">
-                    <li>
-                        <i class="fas fa-eye"></i>
-                        <span>Page visitors today</span>
-                        <span class="count">99</span>
+                <ul class="list-none p-0 border-t border-[#e0e0e0]">
+                    <li class="flex items-center py-3 text-sm border-b border-[#e0e0e0] last:border-b-0">
+                        <i class="fas fa-eye text-[#666] mr-2.5"></i>
+                        <span class="flex-1 text-[#666]">Page visitors today</span>
+                        <span class="font-semibold text-[#666]">99</span>
                     </li>
-                    <li>
-                        <i class="fas fa-user-plus"></i>
-                        <span>Page followers today</span>
-                        <span class="count">47</span>
+                    <li class="flex items-center py-3 text-sm border-b border-[#e0e0e0] last:border-b-0">
+                        <i class="fas fa-user-plus text-[#666] mr-2.5"></i>
+                        <span class="flex-1 text-[#666]">Page followers today</span>
+                        <span class="font-semibold text-[#666]">47</span>
                     </li>
-                    <li>
-                        <i class="fas fa-heart"></i>
-                        <span>Applicants show interests</span>
-                        <span class="count">11</span>
+                    <li class="flex items-center py-3 text-sm border-b border-[#e0e0e0] last:border-b-0">
+                        <i class="fas fa-heart text-[#666] mr-2.5"></i>
+                        <span class="flex-1 text-[#666]">Applicants show interests</span>
+                        <span class="font-semibold text-[#666]">11</span>
                     </li>
                 </ul>
             </div>
 
             <!-- Professional Group -->
-            <div class="card group-card">
-                <h4>Professional Group</h4>
-                <div class="group-create">
-                    <i class="fas fa-users"></i>
-                    <a href="#">Create new group</a>
+            <div class="bg-white rounded-lg shadow-sm mb-5 overflow-hidden p-5">
+                <h4 class="text-base font-semibold mb-4 text-black">Professional Group</h4>
+                <div class="flex items-center gap-2.5">
+                    <i class="fas fa-users text-[#666] text-lg"></i>
+                    <a href="#" class="text-secondary text-sm no-underline hover:underline">Create new group</a>
                 </div>
             </div>
         </aside>
 
         <!-- Main Feed -->
-        <main class="main-feed">
+        <main class="min-h-screen">
             <!-- Post Input -->
-            <div class="card post-input">
-                <div class="post-header">
-                    <img src="https://ui-avatars.com/api/?name=Kalisa+Felix&background=4A90E2&color=fff&size=50" alt="Profile" class="post-avatar">
-                    <div class="post-input-box">
-                        <span class="placeholder">I have a Job, I can post to support Jobless!</span>
+            <div class="bg-white rounded-lg shadow-sm mb-5 overflow-hidden p-4">
+                <div class="flex items-center gap-3 mb-4">
+                    <img src="https://ui-avatars.com/api/?name=Kalisa+Felix&background=4A90E2&color=fff&size=50" alt="Profile" class="w-[50px] h-[50px] rounded-full">
+                    <div class="flex-1 px-4 py-3 border border-[#d0d0d0] rounded-[25px] cursor-pointer">
+                        <span class="text-[#999] text-sm">I have a Job, I can post to support Jobless!</span>
                     </div>
                 </div>
-                <div class="post-actions">
-                    <button class="btn-followers">
-                        <i class="fas fa-users"></i>
+                <div class="flex items-center justify-between gap-2.5 md:flex-col md:items-stretch">
+                    <button class="flex items-center gap-2 bg-transparent text-secondary px-3 py-2 text-sm rounded border-0 cursor-pointer hover:opacity-90">
+                        <i class="fas fa-users text-base"></i>
                         Your Followers
                     </button>
-                    <div class="post-options">
-                        <i class="fas fa-image"></i>
-                        <div class="currency">
-                            <i class="fas fa-dollar-sign"></i>
+                    <div class="flex items-center gap-4 md:justify-between">
+                        <i class="fas fa-image text-[#666] text-xl cursor-pointer"></i>
+                        <div class="flex items-center gap-1.5 px-3 py-1.5 bg-[#f3f6f9] rounded text-sm text-[#333]">
+                            <i class="fas fa-dollar-sign text-sm"></i>
                             <span>US$ 99.99</span>
                         </div>
-                        <button class="btn-post">Post</button>
-                        <span class="jobless-count">16,000 Jobless</span>
+                        <button class="bg-accent text-white px-6 py-2 rounded-[20px] text-sm font-semibold border-0 cursor-pointer hover:opacity-90">Post</button>
+                        <span class="text-[#666] text-[13px]">16,000 Jobless</span>
                     </div>
                 </div>
             </div>
 
             <!-- Home Title -->
-            <div class="home-title">
-                <h2>Home</h2>
-                <i class="fas fa-cog"></i>
+            <div class="flex items-center justify-between py-4">
+                <h2 class="text-[22px] font-semibold text-black">Home</h2>
+                <i class="fas fa-cog text-[#666] text-lg cursor-pointer"></i>
             </div>
 
             <!-- Job Cards -->
-            <div class="card job-card">
-                <div class="job-header">
-                    <img src="https://ui-avatars.com/api/?name=Airtel+Rwanda&background=E31E24&color=fff&size=60" alt="Airtel Rwanda" class="company-icon">
-                    <div class="job-title-section">
-                        <h4>Airtel Rwanda <i class="fas fa-check-circle verified"></i></h4>
-                        <p class="job-position">Network & System Administrator</p>
-                        <p class="job-degree">Bachelor Degree in Software Engineering</p>
+            <div class="bg-white rounded-lg shadow-sm mb-5 overflow-hidden p-5">
+                <div class="flex items-start gap-4 mb-4">
+                    <img src="https://ui-avatars.com/api/?name=Airtel+Rwanda&background=E31E24&color=fff&size=60" alt="Airtel Rwanda" class="w-[60px] h-[60px] rounded-lg object-cover">
+                    <div>
+                        <h4 class="text-base font-semibold mb-1.5 text-black">
+                            Airtel Rwanda 
+                            <i class="fas fa-check-circle text-secondary text-sm"></i>
+                        </h4>
+                        <p class="text-sm text-[#333] font-medium mb-1">Network & System Administrator</p>
+                        <p class="text-[13px] text-[#666]">Bachelor Degree in Software Engineering</p>
                     </div>
                 </div>
-                <button class="btn-urgent">Urgent Hiring !</button>
+                <button class="w-full bg-accent text-white py-2.5 rounded text-sm font-semibold border-0 cursor-pointer hover:opacity-90">Urgent Hiring !</button>
             </div>
 
-            <div class="card job-card">
-                <div class="job-header">
-                    <img src="https://ui-avatars.com/api/?name=Twapela&background=2C3E50&color=fff&size=60" alt="Twapela" class="company-icon">
-                    <div class="job-title-section">
-                        <h4>Twapela <i class="fas fa-check-circle verified"></i></h4>
-                        <p class="job-position">Machine Learning Engineer</p>
-                        <p class="job-degree">Masters Degree in Mathematics</p>
+            <div class="bg-white rounded-lg shadow-sm mb-5 overflow-hidden p-5">
+                <div class="flex items-start gap-4 mb-4">
+                    <img src="https://ui-avatars.com/api/?name=Twapela&background=2C3E50&color=fff&size=60" alt="Twapela" class="w-[60px] h-[60px] rounded-lg object-cover">
+                    <div>
+                        <h4 class="text-base font-semibold mb-1.5 text-black">
+                            Twapela 
+                            <i class="fas fa-check-circle text-secondary text-sm"></i>
+                        </h4>
+                        <p class="text-sm text-[#333] font-medium mb-1">Machine Learning Engineer</p>
+                        <p class="text-[13px] text-[#666]">Masters Degree in Mathematics</p>
                     </div>
                 </div>
-                <button class="btn-urgent">Urgent Hiring !</button>
+                <button class="w-full bg-accent text-white py-2.5 rounded text-sm font-semibold border-0 cursor-pointer hover:opacity-90">Urgent Hiring !</button>
             </div>
 
-            <div class="card job-card">
-                <div class="job-header">
-                    <img src="https://ui-avatars.com/api/?name=Mpuza+Inc&background=FF6B35&color=fff&size=60" alt="Mpuza Inc" class="company-icon">
-                    <div class="job-title-section">
-                        <h4>Mpuza, Inc. <i class="fas fa-check-circle verified"></i></h4>
-                        <p class="job-position">Legal Officer</p>
-                        <p class="job-degree">Bachelor Degree in International Law</p>
+            <div class="bg-white rounded-lg shadow-sm mb-5 overflow-hidden p-5">
+                <div class="flex items-start gap-4 mb-4">
+                    <img src="https://ui-avatars.com/api/?name=Mpuza+Inc&background=FF6B35&color=fff&size=60" alt="Mpuza Inc" class="w-[60px] h-[60px] rounded-lg object-cover">
+                    <div>
+                        <h4 class="text-base font-semibold mb-1.5 text-black">
+                            Mpuza, Inc. 
+                            <i class="fas fa-check-circle text-secondary text-sm"></i>
+                        </h4>
+                        <p class="text-sm text-[#333] font-medium mb-1">Legal Officer</p>
+                        <p class="text-[13px] text-[#666]">Bachelor Degree in International Law</p>
                     </div>
                 </div>
-                <button class="btn-urgent">Urgent Hiring !</button>
+                <button class="w-full bg-accent text-white py-2.5 rounded text-sm font-semibold border-0 cursor-pointer hover:opacity-90">Urgent Hiring !</button>
             </div>
 
             <!-- Company Post -->
-            <div class="card company-post">
-                <button class="btn-follow">
+            <div class="bg-white rounded-lg shadow-sm mb-5 overflow-hidden p-5 relative">
+                <button class="absolute top-5 right-5 flex items-center gap-1.5 bg-transparent text-secondary px-3 py-1.5 border border-secondary rounded text-[13px] cursor-pointer hover:opacity-90">
                     <i class="fas fa-plus"></i>
                     Follow
                 </button>
-                <div class="post-info">
-                    <div class="info-item">
-                        <i class="fas fa-briefcase"></i>
-                        <span>3 Vacant Positions</span>
+                <div class="mb-5 p-4 bg-[#f8f9fa] rounded-md">
+                    <div class="flex items-center gap-2.5 py-2">
+                        <i class="fas fa-briefcase text-[#666] text-base w-5"></i>
+                        <span class="text-sm text-[#333]">3 Vacant Positions</span>
                     </div>
-                    <div class="info-item">
-                        <i class="fas fa-calendar"></i>
-                        <span>1 Year of Experience</span>
-                    </div>
-                </div>
-                <div class="time-remaining">
-                    <div class="time-box">
-                        <span class="time-value">04</span>
-                        <span class="time-label">Days</span>
-                    </div>
-                    <div class="time-box">
-                        <span class="time-value">08</span>
-                        <span class="time-label">Hours</span>
-                    </div>
-                    <div class="time-box">
-                        <span class="time-value">44</span>
-                        <span class="time-label">Minutes</span>
+                    <div class="flex items-center gap-2.5 py-2">
+                        <i class="fas fa-calendar text-[#666] text-base w-5"></i>
+                        <span class="text-sm text-[#333]">1 Year of Experience</span>
                     </div>
                 </div>
-                <div class="post-actions-bottom">
-                    <button class="action-btn">
-                        <i class="fas fa-heart"></i>
+                <div class="flex justify-center gap-4 mb-5 p-5 bg-[#fff5f5] rounded-md">
+                    <div class="text-center">
+                        <span class="block text-[28px] font-bold text-primary leading-none mb-1.5">04</span>
+                        <span class="text-xs text-[#666] uppercase">Days</span>
+                    </div>
+                    <div class="text-center">
+                        <span class="block text-[28px] font-bold text-primary leading-none mb-1.5">08</span>
+                        <span class="text-xs text-[#666] uppercase">Hours</span>
+                    </div>
+                    <div class="text-center">
+                        <span class="block text-[28px] font-bold text-primary leading-none mb-1.5">44</span>
+                        <span class="text-xs text-[#666] uppercase">Minutes</span>
+                    </div>
+                </div>
+                <div class="flex justify-around pt-4 border-t border-[#e0e0e0]">
+                    <button class="flex items-center gap-1.5 bg-transparent text-[#666] px-3 py-2 rounded text-sm border-0 cursor-pointer hover:bg-[#f3f6f9]">
+                        <i class="fas fa-heart text-base"></i>
                         Like
                     </button>
-                    <button class="action-btn">
-                        <i class="fas fa-comment"></i>
+                    <button class="flex items-center gap-1.5 bg-transparent text-[#666] px-3 py-2 rounded text-sm border-0 cursor-pointer hover:bg-[#f3f6f9]">
+                        <i class="fas fa-comment text-base"></i>
                         Comment
                     </button>
-                    <button class="action-btn">
-                        <i class="fas fa-share"></i>
+                    <button class="flex items-center gap-1.5 bg-transparent text-[#666] px-3 py-2 rounded text-sm border-0 cursor-pointer hover:bg-[#f3f6f9]">
+                        <i class="fas fa-share text-base"></i>
                         Share
                     </button>
-                    <button class="action-btn">
-                        <i class="fas fa-star"></i>
+                    <button class="flex items-center gap-1.5 bg-transparent text-[#666] px-3 py-2 rounded text-sm border-0 cursor-pointer hover:bg-[#f3f6f9]">
+                        <i class="fas fa-star text-base"></i>
                         Favourite
                     </button>
                 </div>
             </div>
 
             <!-- One Acre Fund Post -->
-            <div class="card company-post">
-                <div class="company-header">
-                    <img src="https://ui-avatars.com/api/?name=One+Acre+Fund&background=2E7D32&color=fff&size=50" alt="One Acre Fund" class="company-avatar">
-                    <div>
-                        <h4>One Acre Fund <i class="fas fa-check-circle verified"></i></h4>
+            <div class="bg-white rounded-lg shadow-sm mb-5 overflow-hidden p-5">
+                <div class="flex items-center gap-3 mb-5">
+                    <img src="https://ui-avatars.com/api/?name=One+Acre+Fund&background=2E7D32&color=fff&size=50" alt="One Acre Fund" class="w-[50px] h-[50px] rounded-lg">
+                    <div class="flex-1">
+                        <h4 class="text-base font-semibold text-black m-0">
+                            One Acre Fund 
+                            <i class="fas fa-check-circle text-secondary text-sm"></i>
+                        </h4>
                     </div>
-                    <button class="btn-follow-small">
+                    <button class="flex items-center gap-1.5 bg-transparent text-secondary px-3 py-1.5 border border-secondary rounded text-[13px] cursor-pointer hover:opacity-90 ml-auto">
                         <i class="fas fa-plus"></i>
                         Follow
                     </button>
                 </div>
-                <div class="post-info">
-                    <div class="info-item">
-                        <i class="fas fa-briefcase"></i>
-                        <span>3 Vacant Positions</span>
+                <div class="mb-5 p-4 bg-[#f8f9fa] rounded-md">
+                    <div class="flex items-center gap-2.5 py-2">
+                        <i class="fas fa-briefcase text-[#666] text-base w-5"></i>
+                        <span class="text-sm text-[#333]">3 Vacant Positions</span>
                     </div>
-                    <div class="info-item">
-                        <i class="fas fa-calendar"></i>
-                        <span>1 Year of Experience</span>
+                    <div class="flex items-center gap-2.5 py-2">
+                        <i class="fas fa-calendar text-[#666] text-base w-5"></i>
+                        <span class="text-sm text-[#333]">1 Year of Experience</span>
                     </div>
-                    <div class="info-item">
-                        <i class="fas fa-graduation-cap"></i>
-                        <span>Bachelor Degree in Software Engineering</span>
-                    </div>
-                </div>
-                <div class="time-remaining">
-                    <div class="time-box">
-                        <span class="time-value">04</span>
-                        <span class="time-label">Days</span>
-                    </div>
-                    <div class="time-box">
-                        <span class="time-value">08</span>
-                        <span class="time-label">Hours</span>
-                    </div>
-                    <div class="time-box">
-                        <span class="time-value">44</span>
-                        <span class="time-label">Minutes</span>
+                    <div class="flex items-center gap-2.5 py-2">
+                        <i class="fas fa-graduation-cap text-[#666] text-base w-5"></i>
+                        <span class="text-sm text-[#333]">Bachelor Degree in Software Engineering</span>
                     </div>
                 </div>
-                <div class="post-actions-bottom">
-                    <button class="action-btn liked">
-                        <i class="fas fa-heart"></i>
+                <div class="flex justify-center gap-4 mb-5 p-5 bg-[#fff5f5] rounded-md">
+                    <div class="text-center">
+                        <span class="block text-[28px] font-bold text-primary leading-none mb-1.5">04</span>
+                        <span class="text-xs text-[#666] uppercase">Days</span>
+                    </div>
+                    <div class="text-center">
+                        <span class="block text-[28px] font-bold text-primary leading-none mb-1.5">08</span>
+                        <span class="text-xs text-[#666] uppercase">Hours</span>
+                    </div>
+                    <div class="text-center">
+                        <span class="block text-[28px] font-bold text-primary leading-none mb-1.5">44</span>
+                        <span class="text-xs text-[#666] uppercase">Minutes</span>
+                    </div>
+                </div>
+                <div class="flex justify-around pt-4 border-t border-[#e0e0e0]">
+                    <button class="flex items-center gap-1.5 bg-transparent text-primary px-3 py-2 rounded text-sm border-0 cursor-pointer hover:bg-[#f3f6f9]">
+                        <i class="fas fa-heart text-base text-primary"></i>
                         Like
                     </button>
-                    <button class="action-btn">
-                        <i class="fas fa-comment"></i>
+                    <button class="flex items-center gap-1.5 bg-transparent text-[#666] px-3 py-2 rounded text-sm border-0 cursor-pointer hover:bg-[#f3f6f9]">
+                        <i class="fas fa-comment text-base"></i>
                         Comment
                     </button>
-                    <button class="action-btn">
-                        <i class="fas fa-share"></i>
+                    <button class="flex items-center gap-1.5 bg-transparent text-[#666] px-3 py-2 rounded text-sm border-0 cursor-pointer hover:bg-[#f3f6f9]">
+                        <i class="fas fa-share text-base"></i>
                         Share
                     </button>
-                    <button class="action-btn">
-                        <i class="fas fa-star"></i>
+                    <button class="flex items-center gap-1.5 bg-transparent text-[#666] px-3 py-2 rounded text-sm border-0 cursor-pointer hover:bg-[#f3f6f9]">
+                        <i class="fas fa-star text-base"></i>
                         Favourite
                     </button>
                 </div>
@@ -316,88 +354,115 @@
         </main>
 
         <!-- Right Sidebar -->
-        <aside class="sidebar-right">
+        <aside class="sticky top-20 self-start md:hidden">
             <!-- Favourited Jobs -->
-            <div class="card favourited-jobs">
-                <div class="fav-header">
-                    <i class="fas fa-star"></i>
-                    <span>Favourited Jobs</span>
+            <div class="bg-gradient-to-br from-[#667eea] to-[#764ba2] text-white rounded-lg shadow-sm mb-5 overflow-hidden p-5">
+                <div class="flex items-center gap-2.5 mb-2.5">
+                    <i class="fas fa-star text-xl text-white"></i>
+                    <span class="text-base font-semibold text-white">Favourited Jobs</span>
                 </div>
-                <p class="fav-subtitle">Click on interested Job Favourite Icon<br>To save it here to enable quick access!</p>
+                <p class="text-xs text-white/90 mb-4 leading-relaxed">Click on interested Job Favourite Icon<br>To save it here to enable quick access!</p>
                 
                 <!-- Woman Profile Image -->
-                <div class="profile-showcase">
-                    <img src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=150&h=150&fit=crop&crop=faces" alt="Profile" class="profile-showcase-img">
-                    <p class="showcase-text">Biz appreciates from humanity !</p>
+                <div class="text-center my-4">
+                    <img src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=150&h=150&fit=crop&crop=faces" alt="Profile" class="w-[120px] h-[120px] rounded-full border-4 border-white object-cover mb-2.5 mx-auto">
+                    <p class="text-[13px] text-[#ff69b4] italic font-medium">Biz appreciates from humanity !</p>
                 </div>
                 
-                <div class="dream-illustration">
-                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=300&h=120&fit=crop" alt="Let us realize your dream" class="dream-img">
-                    <p class="dream-text">Let us realize your dream</p>
+                <div class="relative mt-4 text-center">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=300&h=120&fit=crop" alt="Let us realize your dream" class="w-full rounded-md h-[100px] object-cover">
+                    <p class="absolute bottom-2.5 left-1/2 -translate-x-1/2 text-xs text-white bg-black/50 px-4 py-1.5 rounded-[15px] font-medium">Let us realize your dream</p>
                 </div>
             </div>
 
             <!-- Job Detail Card -->
-            <div class="card job-detail-card">
-                <button class="close-btn">&times;</button>
-                <div class="job-detail-header">
-                    <img src="https://ui-avatars.com/api/?name=Airtel+Rwanda&background=E31E24&color=fff&size=60" alt="Airtel Rwanda" class="detail-company-logo">
-                    <div class="detail-info">
-                        <h4>Airtel Rwanda</h4>
-                        <p class="detail-position">Network & System Administrator [Full-Time]</p>
-                        <p class="detail-category">Telecommunication</p>
+            <div class="bg-white rounded-lg shadow-sm mb-5 overflow-hidden p-5 relative">
+                <button class="absolute top-4 right-4 bg-transparent text-[#999] text-2xl w-[30px] h-[30px] rounded-full flex items-center justify-center border-0 cursor-pointer hover:bg-[#f3f6f9] hover:text-[#333]">&times;</button>
+                <div class="flex items-start gap-4 mb-5 pr-[30px]">
+                    <img src="https://ui-avatars.com/api/?name=Airtel+Rwanda&background=E31E24&color=fff&size=60" alt="Airtel Rwanda" class="w-[60px] h-[60px] rounded-lg flex-shrink-0">
+                    <div>
+                        <h4 class="text-base font-semibold mb-1.5 text-black">Airtel Rwanda</h4>
+                        <p class="text-sm text-[#333] font-medium mb-1">Network & System Administrator [Full-Time]</p>
+                        <p class="text-[13px] text-[#666]">Telecommunication</p>
                     </div>
                 </div>
-                <div class="time-remaining-large">
-                    <i class="fas fa-star favorite-star"></i>
-                    <div class="time-box-large">
-                        <span class="time-value-large">04</span>
-                        <span class="time-label-large">Days</span>
+                <div class="flex items-center justify-between p-4 bg-[#fff5f5] rounded-md mb-5">
+                    <i class="fas fa-star text-[#ffc107] text-2xl"></i>
+                    <div class="text-center flex-1">
+                        <span class="block text-2xl font-bold text-primary leading-none mb-1">04</span>
+                        <span class="text-[11px] text-[#666] capitalize">Days</span>
                     </div>
-                    <div class="time-box-large">
-                        <span class="time-value-large">08</span>
-                        <span class="time-label-large">Hours</span>
+                    <div class="text-center flex-1">
+                        <span class="block text-2xl font-bold text-primary leading-none mb-1">08</span>
+                        <span class="text-[11px] text-[#666] capitalize">Hours</span>
                     </div>
-                    <div class="time-box-large">
-                        <span class="time-value-large">44</span>
-                        <span class="time-label-large">Minutes</span>
+                    <div class="text-center flex-1">
+                        <span class="block text-2xl font-bold text-primary leading-none mb-1">44</span>
+                        <span class="text-[11px] text-[#666] capitalize">Minutes</span>
                     </div>
                 </div>
-                <div class="job-sections">
-                    <div class="section">
-                        <h5>Job Description</h5>
-                        <p>This job will be based in Kigali, Rwanda. The Network & System Administrator will maintain and manage IT infrastructure, ensuring optimal performance and security of all systems.</p>
+                <div class="max-h-[600px] overflow-y-auto pr-1.5 custom-scrollbar">
+                    <div class="mb-5 pb-4 border-b border-[#e0e0e0] last:border-b-0">
+                        <h5 class="text-[15px] font-semibold mb-2.5 text-black">Job Description</h5>
+                        <p class="text-[13px] text-[#666] leading-relaxed flex items-start gap-2">This job will be based in Kigali, Rwanda. The Network & System Administrator will maintain and manage IT infrastructure, ensuring optimal performance and security of all systems.</p>
                     </div>
-                    <div class="section">
-                        <h5>Number of Positions</h5>
-                        <p><i class="fas fa-info-circle"></i> We are currently hiring for 3 vacant positions to join our growing technical team.</p>
+                    <div class="mb-5 pb-4 border-b border-[#e0e0e0] last:border-b-0">
+                        <h5 class="text-[15px] font-semibold mb-2.5 text-black">Number of Positions</h5>
+                        <p class="text-[13px] text-[#666] leading-relaxed flex items-start gap-2">
+                            <i class="fas fa-info-circle text-secondary mt-0.5 flex-shrink-0"></i>
+                            We are currently hiring for 3 vacant positions to join our growing technical team.
+                        </p>
                     </div>
-                    <div class="section">
-                        <h5>Direct Supervisor</h5>
-                        <p><i class="fas fa-info-circle"></i> Reports directly to the Head of IT Operations and Infrastructure Management.</p>
+                    <div class="mb-5 pb-4 border-b border-[#e0e0e0] last:border-b-0">
+                        <h5 class="text-[15px] font-semibold mb-2.5 text-black">Direct Supervisor</h5>
+                        <p class="text-[13px] text-[#666] leading-relaxed flex items-start gap-2">
+                            <i class="fas fa-info-circle text-secondary mt-0.5 flex-shrink-0"></i>
+                            Reports directly to the Head of IT Operations and Infrastructure Management.
+                        </p>
                     </div>
-                    <div class="section">
-                        <h5>Duties and Responsibilities</h5>
-                        <ul>
-                            <li><i class="fas fa-check-circle"></i> Configure and maintain network systems including routers, switches, and firewalls</li>
-                            <li><i class="fas fa-check-circle"></i> Monitor system performance and implement security measures to protect data</li>
-                            <li><i class="fas fa-check-circle"></i> Provide technical support and troubleshoot hardware and software issues</li>
+                    <div class="mb-5 pb-4 border-b border-[#e0e0e0] last:border-b-0">
+                        <h5 class="text-[15px] font-semibold mb-2.5 text-black">Duties and Responsibilities</h5>
+                        <ul class="list-none p-0">
+                            <li class="text-[13px] text-[#666] leading-relaxed mb-2 flex items-start gap-2">
+                                <i class="fas fa-check-circle text-[#4caf50] mt-0.5 flex-shrink-0 text-sm"></i>
+                                Configure and maintain network systems including routers, switches, and firewalls
+                            </li>
+                            <li class="text-[13px] text-[#666] leading-relaxed mb-2 flex items-start gap-2">
+                                <i class="fas fa-check-circle text-[#4caf50] mt-0.5 flex-shrink-0 text-sm"></i>
+                                Monitor system performance and implement security measures to protect data
+                            </li>
+                            <li class="text-[13px] text-[#666] leading-relaxed mb-2 flex items-start gap-2">
+                                <i class="fas fa-check-circle text-[#4caf50] mt-0.5 flex-shrink-0 text-sm"></i>
+                                Provide technical support and troubleshoot hardware and software issues
+                            </li>
                         </ul>
                     </div>
-                    <div class="section">
-                        <h5>Qualifications</h5>
-                        <ul>
-                            <li><i class="fas fa-check-circle"></i> Bachelor's Degree in Software Engineering, IT, or Computer Science</li>
-                            <li><i class="fas fa-check-circle"></i> Strong understanding of network protocols, system administration, and cybersecurity</li>
+                    <div class="mb-5 pb-4 border-b border-[#e0e0e0] last:border-b-0">
+                        <h5 class="text-[15px] font-semibold mb-2.5 text-black">Qualifications</h5>
+                        <ul class="list-none p-0">
+                            <li class="text-[13px] text-[#666] leading-relaxed mb-2 flex items-start gap-2">
+                                <i class="fas fa-check-circle text-[#4caf50] mt-0.5 flex-shrink-0 text-sm"></i>
+                                Bachelor's Degree in Software Engineering, IT, or Computer Science
+                            </li>
+                            <li class="text-[13px] text-[#666] leading-relaxed mb-2 flex items-start gap-2">
+                                <i class="fas fa-check-circle text-[#4caf50] mt-0.5 flex-shrink-0 text-sm"></i>
+                                Strong understanding of network protocols, system administration, and cybersecurity
+                            </li>
                         </ul>
                     </div>
-                    <div class="section">
-                        <h5>Experience</h5>
-                        <p><i class="fas fa-check-circle"></i> Minimum 1 year of hands-on experience in network administration or IT support role</p>
+                    <div class="mb-5 pb-4 border-b border-[#e0e0e0] last:border-b-0">
+                        <h5 class="text-[15px] font-semibold mb-2.5 text-black">Experience</h5>
+                        <p class="text-[13px] text-[#666] leading-relaxed flex items-start gap-2">
+                            <i class="fas fa-check-circle text-[#4caf50] mt-0.5 flex-shrink-0"></i>
+                            Minimum 1 year of hands-on experience in network administration or IT support role
+                        </p>
                     </div>
-                    <div class="section">
-                        <h5>Certificate</h5>
-                        <p><i class="fas fa-check-circle"></i> Industry certifications like CCNA, CompTIA A+, or MCSA highly preferred</p>
+                    <div class="mb-5 pb-4 border-b border-[#e0e0e0] last:border-b-0">
+                        <h5 class="text-[15px] font-semibold mb-2.5 text-black">Certificate</h5>
+                        <p class="text-[13px] text-[#666] leading-relaxed flex items-start gap-2">
+                            <i class="fas fa-check-circle text-[#4caf50] mt-0.5 flex-shrink-0"></i>
+                            Industry certifications like CCNA, CompTIA A+, or MCSA highly preferred
+                        </p>
                     </div>
                 </div>
             </div>
